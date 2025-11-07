@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { CheckIcon } from '@heroicons/react/20/solid'
 
@@ -109,24 +111,26 @@ export default function Pricing() {
               onMouseLeave={() => setHovered(null)}
               className={classNames(
                 isFeatured
-                  ? 'border-2 border-blue-400 shadow-lg scale-[1.02]'
+                  ? 'border-2 border-indigo-400 shadow-lg scale-[1.02]'
                   : 'border border-gray-200 shadow-sm',
-                'bg-white w-[350px] h-[500px] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:cursor-pointer'
+                'bg-white w-[300px] h-[460px] rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:cursor-pointer'
               )}
             >
-              <div className="overflow-hidden">
+              <div>
                 <h3 className="text-blue-600 text-base font-semibold">{tier.name}</h3>
+
                 <p className="mt-3 flex items-baseline gap-x-2">
                   <span className="text-gray-900 text-3xl font-semibold tracking-tight">
                     {tier.priceMonthly}
                   </span>
                   <span className="text-gray-500 text-sm">/project</span>
                 </p>
+
                 <p className="mt-3 text-gray-600 text-sm leading-snug line-clamp-4">
                   {tier.description}
                 </p>
 
-                <ul className="mt-4 space-y-2 text-sm text-gray-700 overflow-hidden">
+                <ul className="mt-4 space-y-2 text-sm text-gray-700">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex gap-x-2">
                       <CheckIcon className="h-4 w-4 text-blue-500 flex-none" />
@@ -138,10 +142,12 @@ export default function Pricing() {
 
               <a
                 href="#"
+                onMouseEnter={() => setHovered(tier.id)}
+                onMouseLeave={() => setHovered(null)}
                 className={classNames(
                   isFeatured
-                    ? 'bg-blue-500 text-white hover:bg-blue-600'
-                    : 'bg-blue-50 text-blue-600 hover:bg-blue-100',
+                    ? 'bg-indigo-500 text-white hover:bg-indigo-600'
+                    : 'bg-indigo-50 text-blue-600 hover:bg-indigo-100',
                   'mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold transition'
                 )}
               >
