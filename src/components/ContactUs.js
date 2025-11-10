@@ -1,10 +1,65 @@
 'use client'
 
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+import { useState } from 'react'
 
 export default function ContactSales() {
+
+  const [showToast, setShowToast] = useState(false)
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: '',
+    message: '',
+  })
+
+  // handle input change
+  const handleChange = (e
+  ) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  // handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const res = await fetch('https://hook.us2.make.com/5r1nipi6temc6miigci4h135oxojfweb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-make-apikey': '3ddbc71bcbf40336462e3c47509a644354fc64b6652cd966192d8e5fb847dcb6',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (res.ok) {
+        setShowToast(true)
+        setTimeout(() => setShowToast(false), 3000)
+        
+        setFormData({
+          firstName: '',
+          lastName: '',
+          company: '',
+          email: '',
+          message: '',
+        })
+      } else {
+        alert('Failed to send message. Try again later.')
+      }
+    } catch (error) {
+      console.error(error)
+      alert('Something went wrong!')
+    }
+  }
+
   return (
-    <section className="relative isolate bg-gradient-to-b from-white via-gray-50 to-gray-100 px-6 py-24 sm:py-32 lg:px-8" id='contact'>
+    <section
+      className="relative isolate bg-gradient-to-b from-white via-gray-50 to-gray-100 px-6 py-24 sm:py-32 lg:px-8"
+      id="contact"
+    >
       {/* Decorative Background */}
       <div
         aria-hidden="true"
@@ -25,27 +80,31 @@ export default function ContactSales() {
           Contact Sales
         </h2>
         <p className="mt-3 text-lg text-gray-600">
-          Let’s build something incredible together. Fill out the form below and our team will reach out within 24 hours.
+          Let’s build something incredible together. Fill out the form below
+          and our team will reach out within 24 hours.
         </p>
       </div>
 
       {/* Form */}
       <form
-        action="#"
-        method="POST"
+        onSubmit={handleSubmit}
         className="mx-auto mt-16 max-w-xl sm:mt-20 bg-white p-8 rounded-2xl shadow-sm border border-gray-200"
       >
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
           {/* First Name */}
           <div>
-            <label htmlFor="first-name" className="block text-sm font-semibold text-gray-900">
+            <label
+              htmlFor="firstName"
+              className="block text-sm font-semibold text-gray-900"
+            >
               First name
             </label>
             <input
-              id="first-name"
-              name="first-name"
+              id="firstName"
+              name="firstName"
               type="text"
-              autoComplete="given-name"
+              value={formData.firstName}
+              onChange={handleChange}
               placeholder="John"
               className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-3.5 py-2 text-gray-900 text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
             />
@@ -53,14 +112,18 @@ export default function ContactSales() {
 
           {/* Last Name */}
           <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold text-gray-900">
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-semibold text-gray-900"
+            >
               Last name
             </label>
             <input
-              id="last-name"
-              name="last-name"
+              id="lastName"
+              name="lastName"
               type="text"
-              autoComplete="family-name"
+              value={formData.lastName}
+              onChange={handleChange}
               placeholder="Doe"
               className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-3.5 py-2 text-gray-900 text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
             />
@@ -68,14 +131,18 @@ export default function ContactSales() {
 
           {/* Company */}
           <div className="sm:col-span-2">
-            <label htmlFor="company" className="block text-sm font-semibold text-gray-900">
+            <label
+              htmlFor="company"
+              className="block text-sm font-semibold text-gray-900"
+            >
               Company
             </label>
             <input
               id="company"
               name="company"
               type="text"
-              autoComplete="organization"
+              value={formData.company}
+              onChange={handleChange}
               placeholder="Company name"
               className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-3.5 py-2 text-gray-900 text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
             />
@@ -83,14 +150,18 @@ export default function ContactSales() {
 
           {/* Email */}
           <div className="sm:col-span-2">
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-900">
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold text-gray-900"
+            >
               Email
             </label>
             <input
               id="email"
               name="email"
               type="email"
-              autoComplete="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="you@example.com"
               className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-3.5 py-2 text-gray-900 text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
             />
@@ -98,19 +169,22 @@ export default function ContactSales() {
 
           {/* Message */}
           <div className="sm:col-span-2">
-            <label htmlFor="message" className="block text-sm font-semibold text-gray-900">
+            <label
+              htmlFor="message"
+              className="block text-sm font-semibold text-gray-900"
+            >
               Message
             </label>
             <textarea
               id="message"
               name="message"
               rows={4}
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Tell us what you're looking for..."
               className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-3.5 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
             />
           </div>
-
-          {/* Privacy Checkbox */}
         </div>
 
         {/* Submit Button */}
@@ -123,6 +197,12 @@ export default function ContactSales() {
           </button>
         </div>
       </form>
+
+      {showToast && (
+        <div className="fixed bottom-5 right-5 z-50 rounded-lg bg-green-500 text-white px-4 py-2 shadow-lg text-sm animate-slide-up">
+          Message sent successfully!
+        </div>
+      )}
     </section>
   )
 }
