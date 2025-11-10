@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-10">
+    <footer className="bg-gray-50 border-t border-gray-200 py-10" id="footer">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-32 text-center md:text-left">
           {/* Brand */}
@@ -30,8 +30,8 @@ export default function Footer() {
         <div className="mt-10 border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center text-gray-500 text-sm">
           <p>© {new Date().getFullYear()} Flowtron. All rights reserved.</p>
           <div className="mt-3 sm:mt-0 flex space-x-4">
-            <a href="#" className="hover:text-indigo-600">Privacy Policy</a>
-            <a href="#" className="hover:text-indigo-600">Terms</a>
+            <a href="#footer" className="hover:text-indigo-600">Privacy Policy</a>
+            <a href="#footer" className="hover:text-indigo-600">Terms</a>
           </div>
         </div>
       </div>

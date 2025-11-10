@@ -57,7 +57,7 @@ export default function about() {
                 At Flowtron (replace with your brand name), we help service-based businesses, agencies, and real estate firms turn messy operations into seamless, scalable systems.
 We combine strategic process design, custom CRM implementation, and smart automation to make sure every part of your business — from leads to payments — runs smoothly.
               </p>
-              <ul role="list" className="mt-8 space-y-8 text-gray-600">
+              <ul className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
                   <BanknotesIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
                   <span>
@@ -75,7 +75,7 @@ Free from burnout.
               <p className="mt-6">
                 Most agencies focus on design or leads — we focus on efficiency and growth.
               </p>
-              <ul role="list" className="mt-8 space-y-8 text-gray-600">
+              <ul  className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
                   <Cog8ToothIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
                   <span>
