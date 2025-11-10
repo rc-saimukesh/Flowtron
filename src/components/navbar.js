@@ -5,9 +5,9 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'About Us', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Next Step', href: '#' },,
+  { name: 'About Us', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Next Step', href: '#contact' },,
 ]
 
 export default function Navbar() {
@@ -31,9 +31,9 @@ export default function Navbar() {
     >
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="text-xl">Flowtron</span>
-          </a>
+          <h3 className="text-2xl font-bold text-gray-800">
+              Flow<span className="text-indigo-600">tron</span>
+            </h3>
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,14 +80,9 @@ export default function Navbar() {
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Code_Consult</span>
-              <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
-              />
-            </a>
+            <h3 className="text-xl font-bold text-gray-800">
+              Flow<span className="text-indigo-600">tron</span>
+            </h3>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -110,14 +105,7 @@ export default function Navbar() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
-              </div>
+             
             </div>
           </div>
         </DialogPanel>

@@ -27,12 +27,12 @@ export default function Hero() {
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <a
-            href="#"
+            href="#contact"
             className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
           >
             Get started
           </a>
-          <a href="#" className="text-sm font-semibold text-gray-900">
+          <a href="#about" className="text-sm font-semibold text-gray-900">
             Learn more <span aria-hidden="true">→</span>
           </a>
         </div>
