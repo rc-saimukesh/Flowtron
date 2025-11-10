@@ -65,7 +65,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="#"
+            href="#contact"
             className={`text-sm font-semibold transition-colors duration-300 ${
               scrolled ? 'text-gray-800 hover:text-indigo-600' : ' hover:text-indigo-600'
             }`}
